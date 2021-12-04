@@ -23,7 +23,14 @@ func main() {
 	Greeting := Hello
 	println(Greeting("Dimas"))
 
-	TextFiltering("Anjing", FilterFunction)
+	TextFiltering("guguk", FilterFunction)
+
+	blFilter := func(text string) bool {
+		return text == "Dimas"
+	}
+	blacklistUser("Eka", blFilter)
+
+	println(factorial(10))
 }
 
 // Function Without Parameter
@@ -95,7 +102,7 @@ type Filter func(string) string
 
 func FilterFunction(text string) string {
 	text = strings.ToLower(text)
-	if text == "anjing" {
+	if text == "guguk" {
 		return "..."
 	} else {
 		return text
@@ -105,4 +112,38 @@ func FilterFunction(text string) string {
 func TextFiltering(text string, filterFunc Filter) {
 	text = filterFunc(text)
 	println("Filtered Text :", text)
+}
+
+// Anonymous Function
+type Blacklist func(string) bool
+
+func blacklistUser(name string, blacklist Blacklist) {
+	if blacklist(name) {
+		println("You're Blocked From Here,", name)
+	} else {
+		println("Welcome to the Club,", name)
+	}
+}
+
+// first Option
+func blacklistFilter(text string) bool {
+	if text == "Dimas" {
+		return true
+	} else {
+		return false
+	}
+}
+
+// second function (Anonymous Function)
+// blFilter := func(text string) bool{
+// 	return text == "Dimas"
+// }
+
+// Recursive Function
+func factorial(number int) int {
+	if number <= 1 {
+		return number
+	} else {
+		return number * factorial(number-1)
+	}
 }
