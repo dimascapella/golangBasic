@@ -13,4 +13,12 @@ func main() {
 	fmt.Println(number1 <= number2)
 	fmt.Println(number1 == number2)
 	fmt.Println(number1 != number2)
+
+	// Boolean Comparasion Operator
+	con1 := true
+	con2 := false
+	fmt.Println(con1 || con2)
+	fmt.Println(con1 && con2)
+	fmt.Println(!con1)
+
 }
